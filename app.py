@@ -118,10 +118,18 @@ def fetch_live_prices() -> dict:
             return json.load(f).get("prices", {})
     return {}
 
+def load_pdb_extended() -> dict:
+    p = DATA_DIR / "pdb_extended.json"
+    if p.exists():
+        with open(p) as f:
+            return json.load(f)
+    return {"earnings": {}, "price_context": {}, "newsflow": {}}
+
 data, transactions, cash_data, nav_history = load_all_data()
 live_prices = fetch_live_prices()
 has_live = len(live_prices) > 0
 pdb_context = load_pdb_context()
+pdb_ext = load_pdb_extended()
 annotations = load_annotations()
 
 
@@ -191,6 +199,12 @@ def render_stock_detail(security_name: str, all_h: list, txns: list, key_prefix:
     irr = ctx.get("irr") or ctx.get("opp_irr")
     sector = ctx.get("sector", "-")
 
+    # Extended data
+    earn = pdb_ext.get("earnings", {}).get(security_name, {})
+    pctx = pdb_ext.get("price_context", {}).get(security_name, {})
+    news = pdb_ext.get("newsflow", {}).get(security_name, [])
+
+    # Row 1: KPIs
     c1, c2, c3, c4, c5, c6 = st.columns(6)
     with c1: st.metric("CMP", f"{cmp:,.2f}")
     with c2: st.metric("Total Qty", f"{total_qty:,.0f}")
@@ -199,10 +213,22 @@ def render_stock_detail(security_name: str, all_h: list, txns: list, key_prefix:
     with c5: st.metric("Target", f"{float(tp):,.0f}" if tp else "-")
     with c6: st.metric("Upside", f"{upside:+.1f}%" if upside else "-")
 
-    # Two-column layout: Research | Annotations
-    col_research, col_annot = st.columns([3, 2])
+    # Row 2: Price context
+    if pctx:
+        pc1, pc2, pc3, pc4, pc5, pc6 = st.columns(6)
+        with pc1: st.metric("Market Cap", f"{pctx['market_cap']:,.0f} Cr" if pctx.get("market_cap") else "-")
+        with pc2: st.metric("52W High", f"{pctx['high_52w']:,.2f}" if pctx.get("high_52w") else "-")
+        with pc3: st.metric("52W Low", f"{pctx['low_52w']:,.2f}" if pctx.get("low_52w") else "-")
+        with pc4:
+            fall = pctx.get("fall_from_52w_high")
+            st.metric("Fall from 52W H", f"{fall*100:+.1f}%" if fall else "-")
+        with pc5: st.metric("1M Return", f"{pctx['return_1m']*100:+.1f}%" if pctx.get("return_1m") else "-")
+        with pc6: st.metric("1Y Return", f"{pctx['return_1y']*100:+.1f}%" if pctx.get("return_1y") else "-")
 
-    with col_research:
+    # Three-column layout: Research | Earnings | Annotations
+    col_res, col_earn, col_annot = st.columns([2, 1.5, 1.5])
+
+    with col_res:
         st.markdown("**Research Context**")
         if ctx.get("thesis"):
             st.markdown(f"*Thesis:* {ctx['thesis']}")
@@ -215,28 +241,49 @@ def render_stock_detail(security_name: str, all_h: list, txns: list, key_prefix:
             st.markdown(f"*Exit Multiple:* {ctx['exit_multiple']}x")
         if irr:
             st.markdown(f"*IRR:* {float(irr)*100:.1f}%")
-        outlook = ctx.get("outlook")
-        if outlook:
-            st.markdown(f"*Outlook:* {outlook}")
         if sector and sector != "-":
             st.markdown(f"*Sector:* {sector}")
         if not any([ctx.get("thesis"), basis, ctx.get("risks")]):
-            st.caption("No research data available for this stock.")
+            st.caption("No research data available.")
+
+    with col_earn:
+        st.markdown("**Earnings Estimates**")
+        if earn:
+            e_rows = []
+            for fy, ek, sk in [("FY26","eps_fy26","sales_fy26"),("FY27","eps_fy27","sales_fy27"),("FY28","eps_fy28","sales_fy28")]:
+                eps_v = earn.get(ek)
+                sales_v = earn.get(sk)
+                if eps_v is not None or sales_v is not None:
+                    e_rows.append({"FY": fy, "EPS": round(eps_v, 2) if eps_v else "-", "Sales": round(sales_v, 0) if sales_v else "-"})
+            if e_rows:
+                st.dataframe(pd.DataFrame(e_rows), use_container_width=True, hide_index=True)
+            cagr = earn.get("eps_cagr")
+            if cagr:
+                st.markdown(f"*EPS CAGR:* **{float(cagr)*100:.1f}%**")
+        else:
+            st.caption("No estimates available.")
 
     with col_annot:
         st.markdown("**Notes & Classification**")
-        new_cat = st.selectbox(
-            "Category",
+        new_cat = st.selectbox("Category",
             ["", "Compounder", "Alpha", "Trade", "Under Review", "Exit Candidate"],
             index=["", "Compounder", "Alpha", "Trade", "Under Review", "Exit Candidate"].index(annot.get("category", "")),
-            key=f"{key_prefix}_cat_{security_name}",
-        )
-        new_comment = st.text_area("Comment", value=annot.get("comment", ""), height=68, key=f"{key_prefix}_cmt_{security_name}")
-        new_next = st.text_area("Next Steps", value=annot.get("next_steps", ""), height=68, key=f"{key_prefix}_ns_{security_name}")
+            key=f"{key_prefix}_cat_{security_name}")
+        new_comment = st.text_area("Comment", value=annot.get("comment", ""), height=60, key=f"{key_prefix}_cmt_{security_name}")
+        new_next = st.text_area("Next Steps", value=annot.get("next_steps", ""), height=60, key=f"{key_prefix}_ns_{security_name}")
         if st.button("Save", key=f"{key_prefix}_save_{security_name}", use_container_width=True):
             set_annotation(security_name, new_comment, new_cat, new_next)
             st.success("Saved")
             st.rerun()
+
+    # Newsflow
+    if news:
+        st.markdown("**Recent News**")
+        for n in news:
+            sent = n.get("sentiment")
+            sent_icon = "" if not sent else (" +ve" if sent > 0.1 else (" -ve" if sent < -0.1 else " neutral"))
+            link_str = f" [link]({n['link']})" if n.get("link") else ""
+            st.markdown(f"- **{n['date']}** | {n['title']}{link_str} *({n['source']}{sent_icon})*")
 
     # Holdings breakdown across demats
     if len(stock_holdings) > 1:
@@ -245,14 +292,9 @@ def render_stock_detail(security_name: str, all_h: list, txns: list, key_prefix:
         for h in stock_holdings:
             mval = h.get("live_market_value", h.get("market_value", 0))
             gl = mval - h["total_cost"]
-            h_rows.append({
-                "Demat": h.get("demat", ""),
-                "Qty": int(h["quantity"]),
-                "Avg Cost": round(h.get("unit_cost", 0), 2),
-                "Invested": round(h["total_cost"], 0),
-                "Market Value": round(mval, 0),
-                "P&L": round(gl, 0),
-            })
+            h_rows.append({"Demat": h.get("demat", ""), "Qty": int(h["quantity"]),
+                "Avg Cost": round(h.get("unit_cost", 0), 2), "Invested": round(h["total_cost"], 0),
+                "Market Value": round(mval, 0), "P&L": round(gl, 0)})
         st.dataframe(pd.DataFrame(h_rows), use_container_width=True, hide_index=True)
 
     # Transactions for this stock

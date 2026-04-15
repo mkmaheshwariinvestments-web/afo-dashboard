@@ -1,0 +1,373 @@
+{
+  "earnings": {
+    "Prestige Estates Projects Ltd": {
+      "eps_fy26": 27.77,
+      "eps_fy27": 32.8,
+      "eps_fy28": 30.63,
+      "sales_fy26": 115023.0,
+      "sales_fy27": 146742.83,
+      "eps_cagr": 0.050266,
+      "sales_cagr": 0.275769
+    },
+    "Muthoot Finance Ltd": {
+      "eps_fy26": 242.85,
+      "eps_fy27": 279.8,
+      "eps_fy28": 292.25,
+      "sales_fy26": 190103.0,
+      "sales_fy27": 229556.0,
+      "eps_cagr": 0.435215,
+      "sales_cagr": 0.468112
+    },
+    "Bajaj Finance Ltd": {
+      "eps_fy26": 30.43,
+      "eps_fy27": 40.36,
+      "eps_fy28": 49.72,
+      "sales_fy26": 542777.06,
+      "sales_fy27": 659609.61
+    },
+    "Central Depository Services India Ltd": {
+      "eps_fy26": 24.45,
+      "eps_fy27": 29.96,
+      "sales_fy26": 11858.29,
+      "sales_fy27": 13957.5
+    },
+    "Healthcare Global Enterprises Ltd": {
+      "eps_fy26": 2.8,
+      "eps_fy27": 6.5,
+      "eps_fy28": 12.0,
+      "sales_fy26": 22388.71,
+      "sales_fy27": 25612.0,
+      "eps_cagr": 2.169280698,
+      "sales_cagr": 0.1411315149
+    },
+    "Jubilant Pharmova Ltd": {
+      "eps_fy26": 28.6,
+      "eps_fy27": 36.7,
+      "eps_fy28": 62.9,
+      "sales_fy26": 72274.33,
+      "sales_fy27": 81268.8,
+      "eps_cagr": 0.3608985256,
+      "sales_cagr": 0.1245349893
+    },
+    "Piramal Pharma": {
+      "eps_fy26": 0.0,
+      "eps_fy27": 2.5,
+      "eps_fy28": 5.4,
+      "sales_fy26": 9151.18,
+      "sales_fy27": 9558.21,
+      "sales_cagr": 0.1122751355
+    },
+    "ICICI Bank Ltd": {
+      "eps_fy26": 463.0,
+      "eps_fy27": 527.0,
+      "eps_fy28": 601.0,
+      "sales_fy26": 1094858.03,
+      "sales_fy27": 1198729.65,
+      "eps_cagr": 0.139322674,
+      "sales_cagr": 0.1150583549
+    },
+    "Aarti Industries Ltd": {
+      "eps_fy26": 11.96,
+      "eps_fy27": 18.22,
+      "eps_fy28": 26.42,
+      "sales_fy26": 73114.63,
+      "sales_fy27": 83710.74,
+      "eps_cagr": 0.4862806264,
+      "sales_cagr": 0.1448020242
+    },
+    "Rainbow Childrens Medicare Ltd": {
+      "eps_fy26": 28.8,
+      "eps_fy27": 36.0,
+      "eps_fy28": 41.2,
+      "sales_fy26": 15254.4,
+      "sales_fy27": 16794.67,
+      "eps_cagr": 0.2106245337,
+      "sales_cagr": 0.1434679372
+    },
+    "Five-Star Business Finance Ltd": {
+      "eps_fy26": 250.0,
+      "eps_fy27": 290.0,
+      "eps_fy28": 339.0,
+      "sales_fy26": 21769.18,
+      "sales_fy27": 24854.3,
+      "eps_cagr": 0.1644741302,
+      "sales_cagr": 0.1436965553
+    },
+    "NTPC Ltd": {
+      "eps_fy26": 23.1,
+      "eps_fy27": 24.9,
+      "eps_fy28": 26.8,
+      "sales_fy26": 1876389.0,
+      "sales_fy27": 1959321.0,
+      "eps_cagr": 0.07711334602,
+      "sales_cagr": 0.06230659396
+    },
+    "Bharti Airtel Ltd": {
+      "eps_fy26": 50.9,
+      "eps_fy27": 73.5,
+      "eps_fy28": 95.1,
+      "sales_fy26": 1738179.07,
+      "sales_fy27": 2109170.19,
+      "eps_cagr": 0.2882719707,
+      "sales_cagr": 0.1741456232
+    },
+    "Aegis Vopak Terminals Ltd": {
+      "eps_cagr": 0.5937385419,
+      "sales_cagr": 0.5553898946
+    },
+    "Scoda Tubes Ltd": {
+      "eps_cagr": 0.4026271508,
+      "sales_cagr": 0.2554261015
+    },
+    "Max Estates Ltd": {
+      "sales_fy26": 1605.0,
+      "sales_fy27": 2280.0,
+      "eps_cagr": 7.94427191,
+      "sales_cagr": 1.368266641
+    },
+    "Samhi Hotels Ltd": {
+      "eps_fy26": 7.4,
+      "eps_fy27": 12.0,
+      "eps_fy28": 15.8,
+      "sales_fy26": 1130.01,
+      "sales_fy27": 1237.77,
+      "eps_cagr": 0.4612101612,
+      "sales_cagr": 0.1268230437
+    },
+    "Swiggy Ltd": {
+      "eps_fy26": -17.22,
+      "eps_fy27": -10.16,
+      "eps_fy28": -1.99,
+      "sales_fy26": 16491.15,
+      "sales_fy27": 23164.52,
+      "eps_cagr": -0.00842624405,
+      "sales_cagr": 0.3568183605
+    },
+    "Heritage Foods Ltd": {
+      "eps_fy26": 20.78,
+      "eps_fy27": 24.69,
+      "eps_fy28": 30.74,
+      "sales_fy26": 41924.25,
+      "sales_fy27": 45399.25,
+      "eps_cagr": 0.2162676621,
+      "sales_cagr": 0.09900107353
+    }
+  },
+  "price_context": {
+    "Aegis Vopak Terminals Ltd": {
+      "market_cap": 20781.41,
+      "high_52w": 293.37,
+      "low_52w": 161.65,
+      "return_1m": -0.030809,
+      "return_3m": -0.208249,
+      "fall_from_52w_high": -0.358762,
+      "rise_from_52w_low": 0.163749
+    },
+    "Muthoot Finance Ltd": {
+      "market_cap": 139309.6,
+      "high_52w": 4091.7,
+      "low_52w": 2026.203,
+      "return_1m": 0.085009,
+      "return_3m": -0.100452,
+      "fall_from_52w_high": -0.129384,
+      "rise_from_52w_low": 0.758116
+    },
+    "Aarti Industries Ltd": {
+      "market_cap": 15287.46,
+      "high_52w": 485.4558,
+      "low_52w": 340.0,
+      "return_1m": -0.007253,
+      "return_3m": 0.128758,
+      "fall_from_52w_high": -0.125976,
+      "rise_from_52w_low": 0.247941
+    },
+    "Central Depository Services India Ltd": {
+      "market_cap": 26752.0,
+      "high_52w": 1790.303,
+      "low_52w": 1119.4,
+      "return_1m": 0.033058,
+      "return_3m": -0.125373,
+      "fall_from_52w_high": -0.279116,
+      "rise_from_52w_low": 0.152939
+    },
+    "Piramal Pharma": {
+      "market_cap": 18990.32,
+      "high_52w": 224.3147,
+      "low_52w": 133.27,
+      "return_1m": -0.057283,
+      "return_3m": -0.189923,
+      "fall_from_52w_high": -0.347033,
+      "rise_from_52w_low": 0.099047
+    },
+    "Bajaj Finance Ltd": {
+      "market_cap": 56131.76,
+      "high_52w": 1094.15,
+      "low_52w": 801.55,
+      "return_1m": -0.043467,
+      "return_3m": -0.072099,
+      "fall_from_52w_high": -0.178403,
+      "rise_from_52w_low": 0.121515
+    },
+    "Bharti Airtel Ltd": {
+      "market_cap": 1114416.55,
+      "high_52w": 2162.7,
+      "low_52w": 1781.9,
+      "return_1m": 0.011079,
+      "return_3m": -0.102341,
+      "fall_from_52w_high": -0.134924,
+      "rise_from_52w_low": 0.049947
+    },
+    "Healthcare Global Enterprises Ltd": {
+      "market_cap": 8150.13,
+      "high_52w": 776.3,
+      "low_52w": 521.75,
+      "return_1m": -0.048142,
+      "return_3m": -0.163654,
+      "fall_from_52w_high": -0.290674,
+      "rise_from_52w_low": 0.055391
+    },
+    "Swiggy Ltd": {
+      "market_cap": 70663.34,
+      "high_52w": 458.45,
+      "low_52w": 260.05,
+      "return_1m": -0.103343,
+      "return_3m": -0.269964,
+      "fall_from_52w_high": -0.42371,
+      "rise_from_52w_low": 0.015959
+    },
+    "Heritage Foods Ltd": {
+      "market_cap": 3004.27,
+      "high_52w": 533.45,
+      "low_52w": 293.95,
+      "return_1m": 0.092003,
+      "return_3m": -0.268749,
+      "fall_from_52w_high": -0.370325,
+      "rise_from_52w_low": 0.142711
+    },
+    "Max Estates Ltd": {
+      "market_cap": 6062.37,
+      "high_52w": 552.2,
+      "low_52w": 308.75,
+      "return_1m": -0.021149,
+      "return_3m": -0.14465,
+      "fall_from_52w_high": -0.321079,
+      "rise_from_52w_low": 0.214251
+    },
+    "Scoda Tubes Ltd": {
+      "high_52w": 212.53,
+      "low_52w": 116.68,
+      "return_1m": 0.217299,
+      "return_3m": -0.066459,
+      "fall_from_52w_high": -0.295441,
+      "rise_from_52w_low": 0.283339
+    },
+    "Samhi Hotels Ltd": {
+      "market_cap": 3438.87,
+      "high_52w": 248.97,
+      "low_52w": 128.15,
+      "return_1m": 0.010726,
+      "return_3m": -0.209641,
+      "fall_from_52w_high": -0.371732,
+      "rise_from_52w_low": 0.220601
+    },
+    "ICICI Bank Ltd": {
+      "market_cap": 10106.17,
+      "high_52w": 1477.2018,
+      "low_52w": 1205.9,
+      "return_1m": 0.02988,
+      "return_3m": -0.053653,
+      "fall_from_52w_high": -0.085365,
+      "rise_from_52w_low": 0.120408
+    },
+    "Rainbow Childrens Medicare Ltd": {
+      "market_cap": 12733.93,
+      "high_52w": 1623.9,
+      "low_52w": 1103.8,
+      "return_1m": 0.078262,
+      "return_3m": -0.017179,
+      "fall_from_52w_high": -0.21436,
+      "rise_from_52w_low": 0.155825
+    },
+    "Five-Star Business Finance Ltd": {
+      "market_cap": 12429.39,
+      "high_52w": 840.6863,
+      "low_52w": 347.3,
+      "return_1m": 0.084558,
+      "return_3m": -0.209062,
+      "fall_from_52w_high": -0.499575,
+      "rise_from_52w_low": 0.211345
+    },
+    "NTPC Ltd": {
+      "market_cap": 366586.1,
+      "high_52w": 390.55,
+      "low_52w": 316.1134,
+      "return_1m": 0.023721,
+      "return_3m": 0.115569,
+      "fall_from_52w_high": -0.01101,
+      "rise_from_52w_low": 0.221872
+    },
+    "Jubilant Pharmova Ltd": {
+      "market_cap": 13807.46,
+      "high_52w": 1236.3,
+      "low_52w": 807.65,
+      "return_1m": 0.098418,
+      "return_3m": -0.172263,
+      "fall_from_52w_high": -0.27825,
+      "rise_from_52w_low": 0.10481
+    },
+    "Prestige Estates Projects Ltd": {
+      "market_cap": 56803.56,
+      "high_52w": 1804.0234,
+      "low_52w": 1126.5,
+      "return_1m": -0.002142,
+      "return_3m": -0.194504,
+      "fall_from_52w_high": -0.276894,
+      "rise_from_52w_low": 0.158012
+    }
+  },
+  "newsflow": {
+    "Swiggy Ltd": [
+      {
+        "title": "Zepto IPO: How it stacks up against listed rivals Blinkit &amp; Instamart",
+        "source": "Economic Times \u2014 Earnings",
+        "date": "2026-04-14",
+        "sentiment": "Neutral",
+        "link": "https://economictimes.indiatimes.com/tech/technology/zepto-ipo-how-it-stacks-up-against-listed-rivals-blinkit-instamart/articleshow/130261037.cms"
+      }
+    ],
+    "ICICI Bank Ltd": [
+      {
+        "title": "ICICI Bank board to discuss fundraising, buyback of debt on this date; check details",
+        "source": "Livemint \u2014 Markets",
+        "date": "2026-04-14",
+        "sentiment": "Neutral",
+        "link": "https://www.livemint.com/market/stock-market-news/icici-bank-board-to-discuss-fundraising-buyback-of-debt-on-this-date-same-as-q4-results-2026-date-check-details-11776153951417.html"
+      },
+      {
+        "title": "8 out of 10 most India's valuable companies add  \u20b94.13 lakh crore mcap amid US-Iran ceasefire; HDFC, ICICI Bank top list",
+        "source": "Livemint \u2014 Companies",
+        "date": "2026-04-12",
+        "sentiment": "Neutral",
+        "link": "https://www.livemint.com/companies/news/8-out-of-10-most-indias-valuable-companies-add-4-13-lakh-crore-mcap-amid-us-iran-ceasefire-hdfc-icici-bank-top-list-11775981327633.html"
+      }
+    ],
+    "Bajaj Finance Ltd": [
+      {
+        "title": "8 out of 10 most India's valuable companies add  \u20b94.13 lakh crore mcap amid US-Iran ceasefire; HDFC, ICICI Bank top list",
+        "source": "Livemint \u2014 Companies",
+        "date": "2026-04-12",
+        "sentiment": "Neutral",
+        "link": "https://www.livemint.com/companies/news/8-out-of-10-most-indias-valuable-companies-add-4-13-lakh-crore-mcap-amid-us-iran-ceasefire-hdfc-icici-bank-top-list-11775981327633.html"
+      }
+    ],
+    "Bharti Airtel Ltd": [
+      {
+        "title": "8 out of 10 most India's valuable companies add  \u20b94.13 lakh crore mcap amid US-Iran ceasefire; HDFC, ICICI Bank top list",
+        "source": "Livemint \u2014 Companies",
+        "date": "2026-04-12",
+        "sentiment": "Neutral",
+        "link": "https://www.livemint.com/companies/news/8-out-of-10-most-indias-valuable-companies-add-4-13-lakh-crore-mcap-amid-us-iran-ceasefire-hdfc-icici-bank-top-list-11775981327633.html"
+      }
+    ]
+  }
+}
