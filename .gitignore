@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+uploads/*.pdf
+.streamlit/secrets.toml
+seed_data.py

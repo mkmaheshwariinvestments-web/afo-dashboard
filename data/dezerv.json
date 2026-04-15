@@ -1,0 +1,150 @@
+{
+  "report_date": "30/03/2026",
+  "accounts": [
+    {
+      "account_id": "107889",
+      "owner_name": "Bhowli Nikhil Shah",
+      "short_name": "BNS",
+      "broker": "Dezerv",
+      "holdings": [
+        {
+          "security": "Bajaj Finance Ltd",
+          "quantity": 4544,
+          "unit_cost": 0.00,
+          "total_cost": 0,
+          "market_price": 801.55,
+          "market_value": 3642243,
+          "income": 0,
+          "total_gl": 3642043,
+          "pct_gl": 0.00
+        },
+        {
+          "security": "Bharti Airtel Ltd",
+          "quantity": 3800,
+          "unit_cost": 1888.65,
+          "total_cost": 7176871,
+          "market_price": 1782.40,
+          "market_value": 6773120,
+          "income": 0,
+          "total_gl": -403751,
+          "pct_gl": -5.63
+        },
+        {
+          "security": "Healthcare Global Enterprises Ltd",
+          "quantity": 9055,
+          "unit_cost": 524.60,
+          "total_cost": 4750230,
+          "market_price": 525.20,
+          "market_value": 4755686,
+          "income": 0,
+          "total_gl": 5456,
+          "pct_gl": 0.11
+        },
+        {
+          "security": "Meesho Ltd",
+          "quantity": 7500,
+          "unit_cost": 154.43,
+          "total_cost": 1158202,
+          "market_price": 140.40,
+          "market_value": 1053000,
+          "income": 0,
+          "total_gl": -105202,
+          "pct_gl": -9.08
+        },
+        {
+          "security": "Muthoot Finance Ltd",
+          "quantity": 1520,
+          "unit_cost": 1975.46,
+          "total_cost": 3002695,
+          "market_price": 3160.10,
+          "market_value": 4803352,
+          "income": 39520,
+          "total_gl": 1840177,
+          "pct_gl": 61.28
+        }
+      ]
+    },
+    {
+      "account_id": "106845",
+      "owner_name": "Nikhil Jitendra Shah",
+      "short_name": "NJS",
+      "broker": "Dezerv",
+      "holdings": [
+        {
+          "security": "Bharti Airtel Ltd",
+          "quantity": 3499,
+          "unit_cost": 1845.65,
+          "total_cost": 6457945,
+          "market_price": 1782.40,
+          "market_value": 6236618,
+          "income": 0,
+          "total_gl": -221328,
+          "pct_gl": -3.43
+        }
+      ]
+    },
+    {
+      "account_id": "108023",
+      "owner_name": "Nikhil Jitendra Shah HUF",
+      "short_name": "NJS HUF",
+      "broker": "Dezerv",
+      "holdings": [
+        {
+          "security": "Bharti Airtel Ltd",
+          "quantity": 1000,
+          "unit_cost": 1953.36,
+          "total_cost": 1953363,
+          "market_price": 1782.40,
+          "market_value": 1782400,
+          "income": 0,
+          "total_gl": -170963,
+          "pct_gl": -8.75
+        },
+        {
+          "security": "E I H Ltd",
+          "quantity": 10000,
+          "unit_cost": 376.05,
+          "total_cost": 3760485,
+          "market_price": 273.55,
+          "market_value": 2735500,
+          "income": 13500,
+          "total_gl": -1011485,
+          "pct_gl": -26.90
+        },
+        {
+          "security": "Healthcare Global Enterprises Ltd",
+          "quantity": 2797,
+          "unit_cost": 557.19,
+          "total_cost": 1558457,
+          "market_price": 525.20,
+          "market_value": 1468984,
+          "income": 0,
+          "total_gl": -89473,
+          "pct_gl": -5.74
+        },
+        {
+          "security": "Heritage Foods Ltd",
+          "quantity": 5400,
+          "unit_cost": 467.28,
+          "total_cost": 2523291,
+          "market_price": 293.95,
+          "market_value": 1587330,
+          "income": 0,
+          "total_gl": -935961,
+          "pct_gl": -37.09
+        },
+        {
+          "security": "Prestige Estates Projects Ltd",
+          "quantity": 1520,
+          "unit_cost": 1315.50,
+          "total_cost": 1999560,
+          "market_price": 1126.50,
+          "market_value": 1712280,
+          "income": 2736,
+          "total_gl": -284544,
+          "pct_gl": -14.23
+        }
+      ]
+    }
+  ]
+}
