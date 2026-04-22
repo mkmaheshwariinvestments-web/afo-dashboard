@@ -23,7 +23,7 @@ TICKER_MAP = {
     "Embassy Office Parks REIT": "EMBASSY",
     "Five-Star Business Finance Ltd": "FIVESTAR",
     "Godavari Biorefineries Ltd": "GODAVARIB",
-    "HDFC Gold Exchange Traded Fund": "HDFCMFGETF",
+    "HDFC Gold Exchange Traded Fund": "HDFCGOLD",
     "Healthcare Global Enterprises Ltd": "HCG",
     "Heritage Foods Ltd": "HERITGFOOD",
     "ICICI Bank Ltd": "ICICIBANK",
@@ -63,6 +63,49 @@ def load_pdb_context() -> dict:
 def get_all_tickers() -> list:
     """Return list of all TrueData ticker symbols."""
     return list(TICKER_MAP.values())
+
+
+def fetch_yfinance_prices(tickers: list) -> dict:
+    """
+    Batch-fetch latest NSE closes via yfinance. Returns {bare_ticker: price}.
+    Silently skips symbols yfinance can't resolve (e.g. a wrong HDFCMFGETF suffix)
+    so a few bad mappings don't kill the whole refresh.
+    """
+    import yfinance as yf
+
+    if not tickers:
+        return {}
+    ns_tickers = [f"{t}.NS" for t in tickers]
+    prices: dict = {}
+    try:
+        data = yf.download(
+            " ".join(ns_tickers),
+            period="5d",
+            progress=False,
+            auto_adjust=True,
+            threads=True,
+            group_by="column",
+        )
+    except Exception as e:
+        print(f"yfinance batch fetch failed: {e}")
+        return {}
+
+    if data.empty or "Close" not in data:
+        return {}
+    close = data["Close"]
+
+    if len(ns_tickers) == 1:
+        # Single-symbol call returns a Series, not a DataFrame column.
+        s = close.dropna()
+        if not s.empty:
+            prices[tickers[0]] = float(s.iloc[-1])
+    else:
+        for t, ns in zip(tickers, ns_tickers):
+            if ns in close.columns:
+                col = close[ns].dropna()
+                if not col.empty:
+                    prices[t] = float(col.iloc[-1])
+    return prices
 
 
 def get_ticker(security_name: str) -> str:

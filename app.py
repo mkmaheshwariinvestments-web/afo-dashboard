@@ -289,10 +289,36 @@ def set_annotation(security: str, comment: str, category: str, next_steps: str):
 def load_all_data():
     return load_holdings(), load_transactions(), load_cash(), load_nav_history()
 
+@st.cache_data(ttl=600, show_spinner="Fetching live prices…")
 def fetch_live_prices() -> dict:
-    p = DATA_DIR / "live_prices.json"
-    if p.exists():
-        with open(p) as f:
+    """
+    Try yfinance (NSE, ~15-min delayed) for all mapped tickers; persist a
+    snapshot to live_prices.json on success. Fall back to the last snapshot
+    if the fetch fails or returns empty.
+
+    Cached 10 min so page navigation doesn't re-hit the network every click.
+    """
+    from portfolio import fetch_yfinance_prices, get_all_tickers
+
+    fresh = fetch_yfinance_prices(get_all_tickers())
+    path = DATA_DIR / "live_prices.json"
+
+    if fresh:
+        payload = {
+            "prices": fresh,
+            "updated_at": datetime.now().isoformat(timespec="seconds"),
+            "source": "yfinance (~15-min delayed)",
+        }
+        try:
+            with open(path, "w") as f:
+                json.dump(payload, f, indent=2)
+        except Exception:
+            pass  # Streamlit Cloud FS is ephemeral; cache still holds it in-session.
+        return fresh
+
+    # Fallback: last persisted snapshot.
+    if path.exists():
+        with open(path) as f:
             return json.load(f).get("prices", {})
     return {}
 
@@ -691,18 +717,21 @@ with col_title:
     if data.get("accounts"):
         report_date = data["accounts"][0].get("report_date", "")
     price_file = DATA_DIR / "live_prices.json"
-    if price_file.exists():
+    price_src = "Statement prices"
+    updated = ""
+    if price_file.exists() and has_live:
         with open(price_file) as f:
             price_meta = json.load(f)
-        updated = price_meta.get("updated_at", "Unknown")[:10]
-        eyebrow = f"AS OF {report_date} · Live prices {updated}" if report_date else f"Live prices {updated}"
-    else:
-        eyebrow = f"AS OF {report_date} · Statement prices" if report_date else "Statement prices"
+        updated = price_meta.get("updated_at", "")[:16].replace("T", " ")
+        src = price_meta.get("source", "yfinance")
+        price_src = f"{src} · {updated}" if updated else src
+    eyebrow = f"AS OF {report_date} · {price_src}" if report_date else price_src
     st.markdown(f'<p class="sub-header">{eyebrow}</p>', unsafe_allow_html=True)
 with col_refresh:
     st.markdown("<br>", unsafe_allow_html=True)
     if st.button("Refresh Prices", use_container_width=True):
-        st.info("Price refresh requires market hours. Using latest available data.")
+        fetch_live_prices.clear()
+        st.rerun()
 
 st.markdown("---")
 
