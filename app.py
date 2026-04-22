@@ -29,27 +29,205 @@ ANNOTATIONS_PATH = DATA_DIR / "annotations.json"
 
 st.set_page_config(page_title="Shah Family Office", page_icon="", layout="wide", initial_sidebar_state="collapsed")
 
-# ── Custom CSS ────────────────────────────────────────────────────────
+# ── MIPL Design System ────────────────────────────────────────────────
+# Tokens lifted from /products/portfolio-dashboard/mipl-dashboard/app/globals.css
 st.markdown("""
 <style>
-    .block-container { padding-top: 1.5rem; }
-    .main-header { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; color: #0f172a; margin-bottom: 0; line-height: 1.2; }
-    .sub-header { font-size: 0.78rem; color: #94a3b8; margin-bottom: 1rem; }
-    [data-testid="stMetric"] { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-    [data-testid="stMetric"] label { font-size: 0.7rem !important; font-weight: 600 !important; color: #64748b !important; text-transform: uppercase; letter-spacing: 0.05em; }
-    [data-testid="stMetric"] [data-testid="stMetricValue"] { font-size: 1.25rem !important; font-weight: 700 !important; color: #0f172a !important; }
-    [data-testid="stMetric"] [data-testid="stMetricDelta"] { font-size: 0.75rem !important; }
-    .stTabs [data-baseweb="tab-list"] { gap: 4px; background: #f1f5f9; border-radius: 8px; padding: 4px; }
-    .stTabs [data-baseweb="tab"] { padding: 8px 22px; font-weight: 600; font-size: 0.85rem; border-radius: 6px; color: #475569; }
-    .stTabs [aria-selected="true"] { background: white !important; color: #0f172a !important; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-    .stDataFrame { font-size: 0.82rem; }
-    .stDataFrame [data-testid="stDataFrameResizable"] { border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
-    hr { border-color: #f1f5f9 !important; margin: 1rem 0 !important; }
-    h3 { font-size: 1rem !important; font-weight: 700 !important; color: #334155 !important; }
-    .stButton > button { border-radius: 8px; font-weight: 600; font-size: 0.82rem; padding: 0.4rem 1rem; border: 1px solid #cbd5e1; }
-    .stButton > button:hover { border-color: #94a3b8; box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
-    [data-testid="stFileUploader"] { border: 2px dashed #cbd5e1; border-radius: 10px; padding: 1rem; }
-    .stock-detail-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1rem; margin-bottom: 0.5rem; }
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+    --color-bg: #fafaf7;
+    --color-surface: #ffffff;
+    --color-surface-offset: #f0f0ea;
+    --color-surface-offset-2: #e7e7e0;
+    --color-divider: #e4e4dc;
+    --color-border: #c8c8bf;
+    --color-text: #111318;
+    --color-text-2: #2f3340;
+    --color-muted: #5a5e6b;
+    --color-faint: #8c8f99;
+    --color-accent: #E2791E;
+    --color-accent-hover: #C56714;
+    --color-accent-soft: rgba(226, 121, 30, 0.10);
+    --color-accent-border: rgba(226, 121, 30, 0.35);
+    --color-success: #1f7a3f;
+    --color-success-fg: #155a2e;
+    --color-success-chip: rgba(31, 122, 63, 0.16);
+    --color-success-chip-strong: rgba(31, 122, 63, 0.26);
+    --color-error: #b3312c;
+    --color-error-fg: #7d221f;
+    --color-error-chip: rgba(179, 49, 44, 0.16);
+    --color-error-chip-strong: rgba(179, 49, 44, 0.28);
+    --color-info-fg: #15426a;
+}
+
+/* Page + body ---------------------------------------------------- */
+.stApp { background: var(--color-bg); }
+html, body, [class*="css"] {
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+}
+.block-container { padding-top: 1.5rem; padding-bottom: 3rem; max-width: 1400px; }
+
+/* Tabular numerics for finance readouts ------------------------- */
+[data-testid="stMetric"], .stDataFrame, .stDataFrame table, [data-testid="stMetricValue"], [data-testid="stMetricDelta"] {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Brand header -------------------------------------------------- */
+.main-header {
+    font-family: 'Lato';
+    font-size: 1.75rem;
+    font-weight: 900;
+    letter-spacing: -0.012em;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.2;
+}
+.sub-header {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0.35rem 0 1.25rem;
+}
+
+/* Metric cards (MIPL StatCard) ----------------------------------- */
+[data-testid="stMetric"] {
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    padding: 14px 18px;
+    box-shadow: 0 1px 2px rgba(17,19,24,0.04), 0 0 0 1px rgba(17,19,24,0.04);
+}
+[data-testid="stMetric"] label {
+    font-size: 0.6875rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted) !important;
+}
+[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.005em;
+    color: var(--color-text) !important;
+    line-height: 1.2;
+}
+[data-testid="stMetric"] [data-testid="stMetricDelta"] {
+    font-size: 0.75rem !important;
+    margin-top: 2px;
+}
+
+/* Tabs ----------------------------------------------------------- */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 2px;
+    background: var(--color-surface-offset);
+    border-radius: 0.5rem;
+    padding: 4px;
+}
+.stTabs [data-baseweb="tab"] {
+    padding: 8px 22px;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    border-radius: 0.375rem;
+    color: var(--color-muted);
+    letter-spacing: -0.005em;
+}
+.stTabs [aria-selected="true"] {
+    background: var(--color-surface) !important;
+    color: var(--color-text) !important;
+    box-shadow: 0 1px 3px rgba(17,19,24,0.08);
+}
+
+/* Headings ------------------------------------------------------- */
+h3, .stMarkdown h3 {
+    font-family: 'Lato';
+    font-size: 1.125rem !important;
+    font-weight: 700 !important;
+    color: var(--color-text) !important;
+    letter-spacing: -0.005em;
+    margin-top: 0.5rem;
+}
+[data-testid="stMarkdownContainer"] h2 {
+    font-size: 1.375rem !important;
+    font-weight: 700 !important;
+    color: var(--color-text) !important;
+    letter-spacing: -0.008em;
+}
+
+/* Horizontal rule ------------------------------------------------ */
+hr { border-color: var(--color-divider) !important; margin: 1.25rem 0 !important; }
+
+/* Buttons (orange accent on hover/focus) ------------------------ */
+.stButton > button {
+    border-radius: 0.375rem;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    padding: 0.45rem 1.1rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    letter-spacing: -0.003em;
+    transition: all 0.15s ease;
+}
+.stButton > button:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent-hover);
+    background: var(--color-accent-soft);
+}
+.stButton > button:focus:not(:active) {
+    border-color: var(--color-accent);
+    color: var(--color-accent-hover);
+    box-shadow: 0 0 0 2px var(--color-accent-soft);
+    outline: none;
+}
+
+/* DataFrames ----------------------------------------------------- */
+.stDataFrame { font-size: 0.8125rem; }
+.stDataFrame [data-testid="stDataFrameResizable"] {
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+/* File uploader -------------------------------------------------- */
+[data-testid="stFileUploader"] {
+    border: 1px dashed var(--color-border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: var(--color-surface);
+}
+[data-testid="stFileUploader"]:hover { border-color: var(--color-accent); }
+
+/* Inputs --------------------------------------------------------- */
+.stTextInput input, .stTextArea textarea {
+    border-radius: 0.375rem !important;
+    border-color: var(--color-border) !important;
+    font-size: 0.8125rem !important;
+    background: var(--color-surface) !important;
+}
+.stTextInput input:focus, .stTextArea textarea:focus {
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 0 0 2px var(--color-accent-soft) !important;
+}
+
+/* Password input (login) wider */
+.stock-detail-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Caption / help text ------------------------------------------- */
+[data-testid="stCaptionContainer"] {
+    color: var(--color-faint) !important;
+    font-size: 0.75rem !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -142,37 +320,44 @@ def format_inr(value, show_sign=False):
     elif abs_val >= 1e5: return f"{sign}{abs_val / 1e5:,.2f} L"
     else: return f"{sign}{abs_val:,.0f}"
 
+# MIPL chip palette: -chip (normal magnitude), -chip-strong (>20% movement).
+# Text uses the -fg variant for contrast on tinted backgrounds.
 def color_pnl(val):
-    if isinstance(val, (int, float)):
-        if val > 0: return "color: #15803d; background-color: #dcfce7; font-weight: 600"
-        elif val < 0: return "color: #b91c1c; background-color: #fee2e2; font-weight: 600"
-        else: return "color: #6b7280"
-    return ""
+    if not isinstance(val, (int, float)): return ""
+    abs_v = abs(val)
+    # Treat ≥ 20% as strong (only meaningful when val is a percentage; absolute INR
+    # P&L rarely hits the threshold which is fine — it just stays at normal chip).
+    if val > 0:
+        bg = "rgba(31,122,63,0.26)" if abs_v >= 20 else "rgba(31,122,63,0.16)"
+        return f"color: #155a2e; background-color: {bg}; font-weight: 600"
+    if val < 0:
+        bg = "rgba(179,49,44,0.28)" if abs_v >= 20 else "rgba(179,49,44,0.16)"
+        return f"color: #7d221f; background-color: {bg}; font-weight: 600"
+    return "color: #5a5e6b"
 
+# Monochrome navy ramp (viz-1 … viz-5) — darkest = highest concentration.
 def color_weight(val):
     if not isinstance(val, (int, float)): return ""
-    if val >= 10: return "background-color: #1e3a5f; color: white; font-weight: 700"
-    elif val >= 7: return "background-color: #2563eb; color: white; font-weight: 600"
-    elif val >= 5: return "background-color: #60a5fa; color: white; font-weight: 600"
-    elif val >= 3: return "background-color: #bfdbfe; color: #1e3a5f; font-weight: 500"
-    elif val >= 1: return "background-color: #eff6ff; color: #1e3a5f"
-    else: return "color: #9ca3af"
+    if val >= 10: return "background-color: #1A1F36; color: #ffffff; font-weight: 700"
+    if val >= 7:  return "background-color: #3d4160; color: #ffffff; font-weight: 600"
+    if val >= 5:  return "background-color: #5b6380; color: #ffffff; font-weight: 600"
+    if val >= 3:  return "background-color: #a6abbf; color: #1A1F36; font-weight: 500"
+    if val >= 1:  return "background-color: #d9dbe4; color: #1A1F36"
+    return "color: #8c8f99"
 
 def color_upside(val):
     if not isinstance(val, (int, float)): return ""
-    if val >= 100: return "background-color: #14532d; color: white; font-weight: 700"
-    elif val >= 50: return "background-color: #15803d; color: white; font-weight: 600"
-    elif val >= 20: return "background-color: #dcfce7; color: #15803d; font-weight: 600"
-    elif val >= 0: return "color: #16a34a"
-    elif val >= -10: return "color: #b91c1c"
-    else: return "background-color: #fee2e2; color: #b91c1c; font-weight: 600"
+    if val >= 20:  return "background-color: rgba(31,122,63,0.26); color: #155a2e; font-weight: 700"
+    if val >= 0:   return "background-color: rgba(31,122,63,0.16); color: #155a2e; font-weight: 600"
+    if val >= -10: return "color: #7d221f"
+    return "background-color: rgba(179,49,44,0.28); color: #7d221f; font-weight: 700"
 
 def color_txn_type(val):
     if not isinstance(val, str): return ""
     v = val.lower()
-    if "buy" in v: return "color: #15803d; font-weight: 600"
-    elif "sell" in v: return "color: #b91c1c; font-weight: 600"
-    elif "security in" in v: return "color: #2563eb; font-weight: 600"
+    if "buy" in v: return "color: #155a2e; font-weight: 600"
+    if "sell" in v: return "color: #7d221f; font-weight: 600"
+    if "security in" in v: return "color: #15426a; font-weight: 600"
     return ""
 
 
@@ -501,14 +686,19 @@ def render_transaction_ledger(txns: list, key_prefix: str):
 col_title, col_refresh = st.columns([4, 1])
 with col_title:
     st.markdown('<p class="main-header">Shah Family Office</p>', unsafe_allow_html=True)
+    # Eyebrow: report date from the most recent holdings statement, + live-price status.
+    report_date = ""
+    if data.get("accounts"):
+        report_date = data["accounts"][0].get("report_date", "")
     price_file = DATA_DIR / "live_prices.json"
     if price_file.exists():
         with open(price_file) as f:
             price_meta = json.load(f)
-        updated = price_meta.get("updated_at", "Unknown")
-        st.markdown(f'<p class="sub-header">Prices as of: {updated[:19].replace("T", " ")}</p>', unsafe_allow_html=True)
+        updated = price_meta.get("updated_at", "Unknown")[:10]
+        eyebrow = f"AS OF {report_date} · Live prices {updated}" if report_date else f"Live prices {updated}"
     else:
-        st.markdown('<p class="sub-header">Using statement prices (no live data yet)</p>', unsafe_allow_html=True)
+        eyebrow = f"AS OF {report_date} · Statement prices" if report_date else "Statement prices"
+    st.markdown(f'<p class="sub-header">{eyebrow}</p>', unsafe_allow_html=True)
 with col_refresh:
     st.markdown("<br>", unsafe_allow_html=True)
     if st.button("Refresh Prices", use_container_width=True):

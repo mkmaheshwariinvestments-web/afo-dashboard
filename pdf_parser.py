@@ -287,7 +287,7 @@ def _parse_number(s: str) -> float:
 if __name__ == "__main__":
     import sys
 
-    base = "/Users/yvs/Desktop/Abhishek Family Office/Holding Data - Source of Truth"
+    base = "/Users/yvs/Desktop/MIPL AI Workflows/clients/abhishek-family-office/Holding Data - Source of Truth"
 
     # Test holding statement parsing
     for fname in ["Holding Statement BNS - AMBIT.pdf", "Holding Statement NJS - AMBIT.pdf"]:
