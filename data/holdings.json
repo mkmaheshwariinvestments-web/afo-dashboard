@@ -527,27 +527,11 @@
           "pct_gl": 11.39,
           "irr_incep": "167.6",
           "pct_assets": 6.79
-        },
-        {
-          "security": "Swiggy Ltd",
-          "asset_class": "Equity",
-          "wa_days": 546,
-          "quantity": 29421.0,
-          "unit_cost": 345.0,
-          "total_cost": 10150245.0,
-          "market_price": 283.8,
-          "market_value": 8349680.0,
-          "income": 0.0,
-          "total_gl": -1800565.0,
-          "pct_gl": -17.74,
-          "irr_l1y": "-17.51",
-          "irr_incep": "-12.2",
-          "pct_assets": 11.46
         }
       ],
       "equity_total_cost": 54752371.0,
       "equity_total_market_value": 55662722.0
     }
   ],
-  "last_updated": "2026-04-22T14:30:00"
+  "last_updated": "2026-04-22T15:00:00"
 }
